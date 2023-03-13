@@ -40,6 +40,7 @@ class LocalizationSpoofer():
                              odometry_filtered_msg.pose.pose.orientation.z, 
                              odometry_filtered_msg.pose.pose.orientation.w]).as_euler('xyz')[2]
 		loco.pose.theta = theta
+		loco.map = "EmptyMap"
 		self.localization_spoof_topic.publish(loco)
 
 if __name__ == '__main__':

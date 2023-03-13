@@ -19,11 +19,10 @@
     <remap from="cmd_vel" to="cmd_vel_fake" />
   </node>
 
-  <node pkg="graph_navigation" type="run.sh" name="run_graphnav"/>
   <!-- <node pkg="graph_navigation" type="vor.sh" name="run_vor" /> -->
   <node pkg="jackal_helper" type="local_spoofer.py" name="local_spoofer" />
   <node pkg="jackal_helper" type="localgoal.py" name="localgoal" />
   <node pkg="jackal_helper" type="hall.py" name="hall" />
-
-  <node pkg="enml" type="run.sh" name="run_enml" />
+  <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" />
+  <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav" />
 </launch>

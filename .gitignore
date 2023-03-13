@@ -9,3 +9,4 @@ result/
 *.npy
 worlds/
 __pycache__/
+.vscode/
