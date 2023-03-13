@@ -1,0 +1,11 @@
+*.sif
+bin/
+lib/
+build/
+vagn/amrl_maps/
+vagn/amrl_msgs/
+bind/
+result/
+*.npy
+worlds/
+__pycache__/

@@ -1,0 +1,12 @@
+[submodule "third_party/amrl_maps"]
+	path = third_party/amrl_maps
+	url = https://github.com/ut-amrl/amrl_maps.git
+[submodule "third_party/amrl_msgs"]
+	path = third_party/amrl_msgs
+	url = https://github.com/ut-amrl/amrl_msgs.git
+[submodule "third_party/enml"]
+	path = third_party/enml
+	url = https://github.com/ut-amrl/enml.git
+[submodule "third_party/graph_navigation"]
+	path = third_party/graph_navigation
+	url = https://github.com/ut-amrl/graph_navigation.git
