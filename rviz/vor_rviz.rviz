@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /Status1
+        - /Path1
         - /Path2
       Splitter Ratio: 0.5
     Tree Height: 836
@@ -69,7 +70,7 @@ Visualization Manager:
         Y: 0
         Z: 0
       Pose Color: 255; 85; 255
-      Pose Style: None
+      Pose Style: Arrows
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
@@ -228,16 +229,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.356377601623535
+      Distance: 5.1144256591796875
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.14107614755630493
-        Y: 4.751976490020752
-        Z: -0.002289577154442668
+        X: -0.3494848906993866
+        Y: 1.9156062602996826
+        Z: -0.005079095717519522
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
@@ -246,7 +247,7 @@ Visualization Manager:
       Pitch: 1.5697963237762451
       Target Frame: <Fixed Frame>
       Value: Orbit (rviz)
-      Yaw: 3.3603999614715576
+      Yaw: 4.675400733947754
     Saved: ~
 Window Geometry:
   Displays:
@@ -264,5 +265,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1864
-  X: 519
-  Y: 84
+  X: -32
+  Y: -32

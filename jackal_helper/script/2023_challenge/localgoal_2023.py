@@ -16,6 +16,10 @@ import dynamic_reconfigure.client
 import math
 global localG
 global odom
+import numpy as np
+# def find_the_closest_free_vertex(paths):
+#     for path in paths:
+
 
 def callback(data):
     global localG
@@ -29,15 +33,27 @@ def callback(data):
     posy = odom.pose.pose.position.y
     diffx = odom.pose.pose.position.x - data.poses[0].pose.position.x
     diffy = odom.pose.pose.position.y - data.poses[0].pose.position.y
+    goals = []
+
+    # check first goal is close enough 
+
+    # draw line between two points
     for possibleGoal in data.poses:
         possibleGoal.pose.position.x = possibleGoal.pose.position.x + diffx
         possibleGoal.pose.position.y = possibleGoal.pose.position.y + diffy
         goalx = possibleGoal.pose.position.x
         goaly = possibleGoal.pose.position.y
 
+        # angle = np.arctan2(goaly, goalx)
+        # print(angle)
+        # if angle > np.pi / 15:
+
+        #     pose_pub.publish(goals[-1])
+        #     return
+        # goals.append(possibleGoal)
+
         dist = math.sqrt((posx - goalx)**2 + (posy - goaly)**2)
-        
-        if(dist < 1 and dist > 0.75):
+        if(dist > 0.3):
             pose_pub.publish(possibleGoal)
             return
 
@@ -53,8 +69,7 @@ def main():
     odom = None
     rospy.init_node('listen',anonymous=True)
     pose_pub = rospy.Publisher("move_base_simple/localgoal",PoseStamped,queue_size=1)
-    # rospy.Subscriber("/luisa_path", Path, callback)
-    rospy.Subscriber("/move_base/TrajectoryPlannerROS/global_plan", Path, callback)
+    rospy.Subscriber("/luisa_path", Path, callback)
     
     rospy.Subscriber("enml_odometry", Odometry, callbackO)
 

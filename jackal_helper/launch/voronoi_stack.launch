@@ -1,0 +1,12 @@
+<launch>
+  <!-- Start the navigation stack -->
+  <!-- The configuration files are loaded from jackal_helper -->
+  <node pkg="jackal_helper" type="local_spoofer_2023.py" name="local_spoofer" />
+  <node pkg="jackal_helper" type="localgoal_2023.py" name="localgoal" output="screen" />
+  <!-- <node pkg="jackal_helper" type="hall.py" name="hall" /> -->
+  <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" />
+  <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav"  output="screen" />
+  <node pkg="jackal_helper" type="run_vor.sh" name="run_vor" />
+
+  <node pkg="rviz" type="rviz" name="rviz" args="-d /home/zichao/catkin_ws/src/BARNSubmission/rviz/vor_rviz.rviz" />
+</launch>
