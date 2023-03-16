@@ -10,3 +10,6 @@
 [submodule "third_party/graph_navigation"]
 	path = third_party/graph_navigation
 	url = https://github.com/ut-amrl/graph_navigation.git
+[submodule "third_party/voronoi_global_planner"]
+	path = third_party/voronoi_global_planner
+	url = git@github.com:luisa-mao/voronoi_global_planner.git

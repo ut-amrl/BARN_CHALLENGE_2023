@@ -1,4 +1,4 @@
 #!/bin/bash
-cd /home/zichao/catkin_ws/src/voronoi_global_planner
-
+export ROOT_PATH=`pwd`
+cd $ROOT/third_party/voronoi_global_planner
 python vor_node.py
