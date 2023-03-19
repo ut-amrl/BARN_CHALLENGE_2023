@@ -4,11 +4,11 @@
 
 ```
 git clone git@github.com:ut-amrl/BARN_CHALLENGE_2023.git
+cd /path/to/BARN_CHALLENGE_2023
 ```
 
 ## Step 2: Set env variables and Build
 ```
-cd /path/to/BARN_CHALLENGE_2023
 bash build_packages.sh 
 ```
 
