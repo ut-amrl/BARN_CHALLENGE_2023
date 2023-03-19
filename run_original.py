@@ -8,11 +8,44 @@ import numpy as np
 import rospy
 import rospkg
 import signal
+import re
 
 from gazebo_simulation import GazeboSimulation
 import json
 INIT_POSITION = [-2, 3, 1.57]  # in world frame
 GOAL_POSITION = [0, 10]  #244 278 relative to the initial position
+
+def modify_variables(var):
+    #  Open the navigation.lua file for reading
+    with open("third_party/graph_navigation/config/navigation.lua", "r") as f:
+        # Read the contents of the file into a string
+        contents = f.read()
+
+    # Define a regular expression pattern to find the value of carrot_dist
+    pattern = r"carrot_dist\s*=\s*([\d\.]+)"
+
+    # Find the current value of carrot_dist
+    match = re.search(pattern, contents)
+    if match:
+        current_value = float(match.group(1))
+    else:
+        # If carrot_dist is not found, set the current value to None
+        current_value = None
+
+    # Modify the value of carrot_dist
+    new_value = var
+
+    # Replace the current value of carrot_dist with the new value
+    if current_value is not None:
+        contents = re.sub(pattern, f"carrot_dist = {new_value}", contents)
+    else:
+        # If carrot_dist is not found, add it to the end of the file
+        contents += f"\nNavigationParameters.carrot_dist = {new_value};\n"
+
+    # Open the navigation.lua file for writing
+    with open("third_party/graph_navigation/config/navigation.lua", "w") as f:
+        # Write the modified contents back to the file
+        f.write(contents)
 
 def compute_distance(p1, p2):
     return ((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2) ** 0.5
@@ -35,6 +68,7 @@ if __name__ == "__main__":
 
     world_idx = int(sys.argv[1])
     run_idx = int(sys.argv[2])
+    modify_variables(int(sys.argv[3]))
     # parser.add_argument('--world_idx', type=int, default=world_idx)
     
     ##########################################################################################
