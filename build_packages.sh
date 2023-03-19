@@ -1,10 +1,5 @@
 #!/bin/bash 
 
-
-source ~/.bashrc
-export ROS_PACKAGE_PATH=`pwd`:$ROS_PACKAGE_PATH
-echo $ROS_PACKAGE_PATH
-
 cd jackal_helper/script
 chmod +x *.sh
 cd -
