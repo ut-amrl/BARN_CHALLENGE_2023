@@ -203,3 +203,5 @@ if __name__ == "__main__":
     print('finish cleanly')
 
     time.sleep(10)
+    os.system('killall -9 gazebo; killall -9 gzserver; killall -9 gzclient; killall -9 rosmaster; killall -9 roscore; killall -9 python')
+    time.sleep(10)
