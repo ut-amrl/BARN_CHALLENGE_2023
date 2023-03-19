@@ -1,4 +1,3 @@
 #!/bin/bash
-export ROOT_PATH=`pwd`
-cd $ROOT_PATH/third_party/voronoi_global_planner
+cd $HOME/BARN_CHALLENGE_2023/third_party/voronoi_global_planner
 python vor_node.py
