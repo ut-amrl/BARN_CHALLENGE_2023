@@ -34,9 +34,7 @@ def callback(data):
     diffx = odom.pose.pose.position.x - data.poses[0].pose.position.x
     diffy = odom.pose.pose.position.y - data.poses[0].pose.position.y
     goals = []
-
-    # check first goal is close enough 
-
+    
     # draw line between two points
     for possibleGoal in data.poses:
         possibleGoal.pose.position.x = possibleGoal.pose.position.x + diffx
@@ -52,10 +50,16 @@ def callback(data):
         #     return
         # goals.append(possibleGoal)
 
+        # Calculate distance between current position and goal
         dist = math.sqrt((posx - goalx)**2 + (posy - goaly)**2)
+
+        # If the distance is greater than 0.3, publish the goal
         if(dist > 0.3):
             pose_pub.publish(possibleGoal)
             return
+
+        # If the distance is less than 0.3, 
+
 
 def callbackO(data):
     global odom

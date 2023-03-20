@@ -9,6 +9,7 @@ import rospy
 import rospkg
 import signal
 import re 
+import math
 
 from gazebo_simulation import GazeboSimulation
 import json
@@ -24,7 +25,7 @@ def modify_variables(carrot, fov):
     # Define a regular expression pattern to find the value of carrot_dist
     patterns = []
     patterns.append(r"carrot_dist\s*=\s*([\d\.]+)")
-    patterns.append(r"local_fov\s*=\s*([\d\.]+)")
+    patterns.append(r"local_fov\s*=\sdeg2rad\(([\d\.]+)\)")
     var = [carrot, fov]
     for i, pattern in enumerate(patterns):
         # Find the current value of carrot_dist
@@ -39,7 +40,7 @@ def modify_variables(carrot, fov):
         new_value = var[i]
 
         # Replace the current value of carrot_dist with the new value
-        if i is 0:
+        if i == 0:
             if current_value is not None:
                 contents = re.sub(pattern, f"carrot_dist = {new_value}", contents)
             else:
@@ -47,7 +48,7 @@ def modify_variables(carrot, fov):
                 contents += f"\nNavigationParameters.carrot_dist = {new_value};\n"
         else:
              if current_value is not None:
-                contents = re.sub(pattern, f"local_fov = {new_value}", contents)
+                contents = re.sub(pattern, f"local_fov = deg2rad({new_value})", contents)
              else:
             # If carrot_dist is not found, add it to the end of the file
                 contents += f"\nNavigationParameters.local_fov = {new_value};\n"
@@ -74,7 +75,8 @@ def path_coord_to_gazebo_coord(x, y):
 if __name__ == "__main__":
     world_idx = int(sys.argv[1])
     run_idx = int(sys.argv[2])
-    modify_variables(float(sys.argv[3]),int(sys.argv[4]))
+    print(type(sys.argv[4]))
+    modify_variables(float(sys.argv[3]), int(sys.argv[4]))
     # parser.add_argument('--world_idx', type=int, default=world_idx)
     
     ##########################################################################################
