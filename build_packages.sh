@@ -21,5 +21,5 @@ cd build
 cmake ..
 make -j12
 
-cd ../../..
-catkin_make
+# cd ../../..
+# catkin_make
