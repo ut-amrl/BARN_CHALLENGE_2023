@@ -6,7 +6,7 @@ for j in {0..1}
 do
     for i in {275..299}
     do
-        python run_original.py $i $j
+        python run_original.py $i $j 0
         pkill -9 python
         pkill -9 rosmaster
         pkill -9 gzclient

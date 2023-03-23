@@ -65,8 +65,9 @@ def path_coord_to_gazebo_coord(x, y):
 if __name__ == "__main__":
     world_idx = int(sys.argv[1])
     run_idx = int(sys.argv[2])
-    if len(sys.argv) > 3:
-        modify_variables(int(sys.argv[3]))
+    gui = (int(sys.argv[3]) == 1)
+    if len(sys.argv) > 4:
+        modify_variables(int(sys.argv[4]))
 
     ##########################################################################################
     # 0. Launch Gazebo Simulation
@@ -89,7 +90,7 @@ if __name__ == "__main__":
         'roslaunch',
         launch_file,
         'world_name:=' + world_name,
-        'gui:=' + ("true")
+        'gui:=' + ("true" if gui else "false")
     ])
     time.sleep(5)  # sleep to wait until the gazebo being created
 
@@ -202,15 +203,6 @@ if __name__ == "__main__":
     actual_time = curr_time - start_time
     nav_metric = int(success) * optimal_time / np.clip(actual_time, 4 * optimal_time, 8 * optimal_time)
     print("Navigation metric: %.4f" % (nav_metric))
-
-    # isExist = os.path.exists("result/run_{}/".format(run_idx))
-
-    # if not isExist:
-    #     # Create a new directory because it does not exist
-    #     os.makedirs("result/run_{}/".format(run_idx))
-    # with open("result/run_{}/{}.log".format(run_idx, world_idx), 'w') as f:
-    #     result = [world_idx, status, curr_time - start_time, nav_metric]
-    #     json.dump(result, f)
 
     isExist = os.path.exists("result/")
 
