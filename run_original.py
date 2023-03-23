@@ -1,5 +1,4 @@
 import time
-import argparse
 import subprocess
 import os
 from os.path import join
@@ -11,7 +10,6 @@ import signal
 import re
 
 from gazebo_simulation import GazeboSimulation
-import json
 INIT_POSITION = [-2, 3, 1.57]  # in world frame
 GOAL_POSITION = [0, 10]  # 244 278 relative to the initial position
 
@@ -205,14 +203,23 @@ if __name__ == "__main__":
     nav_metric = int(success) * optimal_time / np.clip(actual_time, 4 * optimal_time, 8 * optimal_time)
     print("Navigation metric: %.4f" % (nav_metric))
 
-    isExist = os.path.exists("result/run_{}/".format(run_idx))
+    # isExist = os.path.exists("result/run_{}/".format(run_idx))
+
+    # if not isExist:
+    #     # Create a new directory because it does not exist
+    #     os.makedirs("result/run_{}/".format(run_idx))
+    # with open("result/run_{}/{}.log".format(run_idx, world_idx), 'w') as f:
+    #     result = [world_idx, status, curr_time - start_time, nav_metric]
+    #     json.dump(result, f)
+
+    isExist = os.path.exists("result/")
 
     if not isExist:
         # Create a new directory because it does not exist
-        os.makedirs("result/run_{}/".format(run_idx))
-    with open("result/run_{}/{}.log".format(run_idx, world_idx), 'w') as f:
+        os.makedirs("result/")
+    with open("result/run_{}.log".format(run_idx), 'a') as f:
         result = [world_idx, status, curr_time - start_time, nav_metric]
-        json.dump(result, f)
+        f.write(f"{result}\n")
 
     mb_nav_stack_process.send_signal(signal.SIGINT)
     gazebo_process.send_signal(signal.SIGINT)
