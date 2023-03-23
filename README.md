@@ -19,10 +19,10 @@ bash build_packages.sh
 ```
 
 ## Step 4: Run
-Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`.
+Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command (first argument indicates the world id and the second argument is the trial run number):
 
 ```
-python3 run_original.py 1 1 #runs world 1, trial 1 
+python3 run_original.py 1 1
 ```
 
 # Running with Docker (Do the following after Step 2 above)
