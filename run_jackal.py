@@ -62,6 +62,10 @@ if __name__ == "__main__":
         launch_file,
     ])
 
+    print("Set init and goal. Sleeping for 3 min.")
+    time.sleep(180)
+    print("Awake")
+
     nav_as = actionlib.SimpleActionClient('/move_base', MoveBaseAction)
     mb_goal = MoveBaseGoal()
     mb_goal.target_pose.header.frame_id = 'odom'
