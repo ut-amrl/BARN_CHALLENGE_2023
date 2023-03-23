@@ -20,7 +20,7 @@
   </node>
 
   <node pkg="jackal_helper" type="local_spoofer_2022.py" name="local_spoofer" />
-  <node pkg="jackal_helper" type="localgoal_2023.py" name="localgoal" />
+  <node pkg="jackal_helper" type="localgoal_2022.py" name="localgoal" />
   <node pkg="jackal_helper" type="hall_2022.py" name="hall" />
   <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" />
   <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav" />
