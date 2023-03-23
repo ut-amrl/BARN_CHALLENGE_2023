@@ -1,7 +1,9 @@
 *.sif
 bin/
-lib/
 build/
+devel/
+.catkin_workspace
+lib/
 vagn/amrl_maps/
 vagn/amrl_msgs/
 bind/

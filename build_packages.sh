@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-cd jackal_helper/script
+cd src/jackal_helper/script
 chmod +x *.sh
 cd -
 
@@ -20,3 +20,6 @@ mkdir build
 cd build 
 cmake ..
 make -j12
+
+cd ../../..
+catkin_make

@@ -19,7 +19,6 @@
     <remap from="cmd_vel" to="cmd_vel_fake" />
   </node>
 
-  <!-- <node pkg="graph_navigation" type="vor.sh" name="run_vor" /> -->
   <node pkg="jackal_helper" type="local_spoofer_2022.py" name="local_spoofer" />
   <node pkg="jackal_helper" type="localgoal_2022.py" name="localgoal" />
   <node pkg="jackal_helper" type="hall_2022.py" name="hall" />

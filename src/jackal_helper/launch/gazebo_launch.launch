@@ -39,5 +39,4 @@
 
   <node pkg="jackal_helper" type="collision_publisher_node" name="collision_publisher_node" />
   <node pkg="tf2_ros" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom"/>
-  <!-- <node pkg="rviz" type="rviz" name="rviz" args="-d /home/zichao/catkin_ws/src/BARNSubmission/rviz_config/local_machine_vor.rviz" /> -->
 </launch>

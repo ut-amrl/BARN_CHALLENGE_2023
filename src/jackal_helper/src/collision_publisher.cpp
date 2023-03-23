@@ -18,18 +18,17 @@ bool airborne;
 const std::string DELIMITER = "::";
 
 // Forces callback function
-void forcesCb(ConstContactsPtr &_msg){
+void forcesCb(ConstContactsPtr &_msg) {
     // What to do when callback
     for (int i = 0; i < _msg->contact_size(); ++i) {
-
         std::string entity1 = _msg->contact(i).collision1();
-        entity1 = entity1.substr(0, entity1.find(DELIMITER)); // Extract entity1 name
+        entity1 = entity1.substr(0, entity1.find(DELIMITER));  // Extract entity1 name
 
         std::string entity2 = _msg->contact(i).collision2();
-        entity2 = entity2.substr(0, entity2.find(DELIMITER)); // Extract entity1 name
+        entity2 = entity2.substr(0, entity2.find(DELIMITER));  // Extract entity1 name
 
-        if(entity1 != "ground_plane" && entity2 != "ground_plane"){
-            if (entity1 == "jackal" || entity2 == "jackal"){
+        if (entity1 != "ground_plane" && entity2 != "ground_plane") {
+            if (entity1 == "jackal" || entity2 == "jackal") {
                 std_msgs::Bool collide;
                 collide.data = true;
                 pub.publish(collide);
@@ -38,10 +37,13 @@ void forcesCb(ConstContactsPtr &_msg){
             }
         }
     }
+    std_msgs::Bool collide;
+    collide.data = false;
+    pub.publish(collide);
 }
 
 // Position callback function
-void positionCb(const nav_msgs::Odometry::ConstPtr& msg2){
+void positionCb(const nav_msgs::Odometry::ConstPtr &msg2) {
     if (msg2->pose.pose.position.z > 0.3) {
         airborne = true;
     } else {
@@ -49,7 +51,7 @@ void positionCb(const nav_msgs::Odometry::ConstPtr& msg2){
     }
 }
 
-int main(int _argc, char **_argv){
+int main(int _argc, char **_argv) {
     // Set variables
     airborne = false;
 
@@ -73,16 +75,13 @@ int main(int _argc, char **_argv){
 
     // Busy wait loop...replace with your own code as needed.
     // Busy wait loop...replace with your own code as needed.
-    while (true)
-    {
+    while (true) {
         gazebo::common::Time::MSleep(20);
 
         // Spin ROS (needed for publisher) // (nope its actually for subscribers-calling callbacks ;-) )
         ros::spinOnce();
 
-
-    // Mayke sure to shut everything down.
-
+        // Mayke sure to shut everything down.
     }
     gazebo::client::shutdown();
 }
