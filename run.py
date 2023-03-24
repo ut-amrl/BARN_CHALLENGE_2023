@@ -103,7 +103,7 @@ if __name__ == "__main__":
         'roslaunch',
         launch_file,
         'world_name:=' + world_name,
-        'gui:=' + ("true")
+        'gui:=' + ("true" if args.gui else "false")
     ])
     time.sleep(5)  # sleep to wait until the gazebo being created
     
@@ -192,11 +192,11 @@ if __name__ == "__main__":
     if not isExist:
         # Create a new directory because it does not exist 
         os.makedirs("result/run_{}/".format(run_idx))
-    with open("result/run_{}/{}.log".format(run_idx, world_idx), 'w') as f:
-        result = [world_idx, status, curr_time - start_time]
+    with open("result/run_{}/{}.log".format(run_idx, args.world_idx), 'w') as f:
+        result = [args.world_idx, status, curr_time - start_time]
         json.dump(result, f)
         
-    path_file_name = join(base_path, "worlds/BARN/path_files", "path_%d.npy" %world_idx)
+    path_file_name = join(base_path, "worlds/BARN/path_files", "path_%d.npy" %args.world_idx)
     path_array = np.load(path_file_name)
     path_array = [path_coord_to_gazebo_coord(*p) for p in path_array]
     path_array = np.insert(path_array, 0, (INIT_POSITION[0], INIT_POSITION[1]), axis=0)
@@ -211,8 +211,8 @@ if __name__ == "__main__":
     nav_metric = int(success) * optimal_time / np.clip(actual_time, 4 * optimal_time, 8 * optimal_time)
     print("Navigation metric: %.4f" %(nav_metric))
     
-    # with open(args.out, "wb") as f:
-    #     f.write("%d %d %d %d %.4f %.4f\n" %(args.world_idx, success, collided, (curr_time - start_time)>=100, curr_time - start_time, nav_metric))
+    with open(args.out, "wb") as f:
+        f.write("%d %d %d %d %.4f %.4f\n" %(args.world_idx, success, collided, (curr_time - start_time)>=100, curr_time - start_time, nav_metric))
     
     mb_nav_stack_process.send_signal(signal.SIGINT)
     gazebo_process.send_signal(signal.SIGINT)

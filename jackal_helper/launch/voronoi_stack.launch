@@ -10,5 +10,5 @@
   <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav"  output="screen" />
   <node pkg="jackal_helper" type="run_vor.sh" name="run_vor" />
 
-  <node pkg="rviz" type="rviz" name="rviz" args="$(arg rviz_path)"/>
+  <!-- <node pkg="rviz" type="rviz" name="rviz" args="$(arg rviz_path)"/> -->
 </launch>
