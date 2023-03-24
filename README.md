@@ -1,3 +1,28 @@
+# Run Instructions for BARN Challenge Organizers !!
+
+
+## Step 1: Add the following to your `~/.bashrc` to point `ROS_PACKAGE_PATH` to the BARN repo
+```
+export ROS_PACKAGE_PATH=/path/to/BARN_CHALLENGE_2023:$ROS_PACKAGE_PATH
+source ~/.bashrc
+```
+
+## Step 2: Run the pre-built singularity container
+
+```
+singularity run nav_competition_image.sif
+```
+
+## Step 3: Build
+```
+bash build_packages.sh 
+```
+
+## Step 3: Run the run.py file
+```
+python3 run.py --world_idx 0 
+```
+
 # Setup and Install
 
 ## Step 1: Clone the repo

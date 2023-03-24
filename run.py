@@ -73,12 +73,15 @@ def path_coord_to_gazebo_coord(x, y):
         return (gazebo_x, gazebo_y)
 
 if __name__ == "__main__":
-    world_idx = int(sys.argv[1])
-    run_idx = int(sys.argv[2])
-    print(type(sys.argv[4]))
-    modify_variables(float(sys.argv[3]), int(sys.argv[4]))
-    # parser.add_argument('--world_idx', type=int, default=world_idx)
-    
+    # world_idx = int(sys.argv[1])
+    # run_idx = int(sys.argv[2])
+    # print(type(sys.argv[4]))
+    # modify_variables(float(sys.argv[3]), int(sys.argv[4]))
+    parser = argparse.ArgumentParser(description = 'test BARN navigation challenge')
+    parser.add_argument('--world_idx', type=int, default=0)
+    parser.add_argument('--gui', action="store_true")
+    parser.add_argument('--out', type=str, default="out.txt")
+    args = parser.parse_args()    
     ##########################################################################################
     ## 0. Launch Gazebo Simulation
     ##########################################################################################
@@ -87,7 +90,7 @@ if __name__ == "__main__":
     os.environ["JACKAL_LASER_MODEL"] = "ust10"
     os.environ["JACKAL_LASER_OFFSET"] = "-0.065 0 0.01"
     
-    world_name = "BARN/world_%d.world" %(world_idx)
+    world_name = "BARN/world_%d.world" %(args.world_idx)
     print(">>>>>>>>>>>>>>>>>> Loading Gazebo Simulation with %s <<<<<<<<<<<<<<<<<<" %(world_name))   
 
     rospack = rospkg.RosPack()
