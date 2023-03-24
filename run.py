@@ -80,6 +80,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description = 'test BARN navigation challenge')
     parser.add_argument('--world_idx', type=int, default=0)
     parser.add_argument('--gui', action="store_true")
+    parser.add_argument('--run_idx', type=int)
     parser.add_argument('--out', type=str, default="out.txt")
     args = parser.parse_args()    
     ##########################################################################################
@@ -187,14 +188,14 @@ if __name__ == "__main__":
         status = "succeeded"
         success = True
     print("Navigation %s with time %.4f (s)" %(status, curr_time - start_time))
-    # isExist = os.path.exists("result/run_{}/".format(run_idx))
+    isExist = os.path.exists("result/run_{}/".format(args.run_idx))
 
-    # if not isExist:
-    #     # Create a new directory because it does not exist 
-    #     os.makedirs("result/run_{}/".format(run_idx))
-    # with open("result/run_{}/{}.log".format(run_idx, args.world_idx), 'w') as f:
-    #     result = [args.world_idx, status, curr_time - start_time]
-    #     json.dump(result, f)
+    if not isExist:
+        # Create a new directory because it does not exist 
+        os.makedirs("result/run_{}/".format(args.run_idx))
+    with open("result/run_{}/{}.log".format(args.run_idx, args.world_idx), 'w') as f:
+        result = [args.world_idx, status, curr_time - start_time]
+        json.dump(result, f)
         
     path_file_name = join(base_path, "worlds/BARN/path_files", "path_%d.npy" %args.world_idx)
     path_array = np.load(path_file_name)

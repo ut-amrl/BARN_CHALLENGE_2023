@@ -1,6 +1,6 @@
 import json 
 import os
-DIR1 = "/home/alienwareamrl/Research/BARN_CHALLENGE_2023/result/run_2/"
+DIR1 = "/home/alienwareamrl/Research/BARN_CHALLENGE_2023/result/run_3/"
 
 
 fail1 = []
