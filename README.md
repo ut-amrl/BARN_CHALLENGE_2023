@@ -12,9 +12,10 @@ export ROS_PACKAGE_PATH=/path/to/BARN_CHALLENGE_2023:$ROS_PACKAGE_PATH
 source ~/.bashrc
 ```
 
-## Step 2: Run the pre-built singularity container
+## Step 2: Build and Run the pre-built singularity container
 
 ```
+sudo singularity build nav_competition_image.sif Singularity.def
 singularity run nav_competition_image.sif
 ```
 
