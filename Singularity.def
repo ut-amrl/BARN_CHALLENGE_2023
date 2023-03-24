@@ -10,6 +10,7 @@ com.nvidia.volumes.needed="nvidia_driver"
 
 %files
     . /jackal_ws/src/nav-competition-icra2022
+    ./libtorch /opt/libtorch
 
 
 %post
@@ -27,7 +28,10 @@ curl \
 python-is-python3 \
 python3-catkin-tools \
 python3-pip \
-software-properties-common
+software-properties-common 
+
+pip3 install scipy
+pip3 install scikit-learn
 
 # https://github.com/ut-amrl/amrl_shared_lib
 apt-get update && apt-get install -y \
@@ -80,31 +84,6 @@ ros-noetic-jackal-gazebo \
 ros-noetic-move-base
 
 
-cd /jackal_ws/src/nav-competition-icra2022/jackal_helper/script
-chmod +x *.sh
-cd /jackal_ws/src/nav-competition-icra2022/
-
-#git stash
-#git submodule update --recursive --init
-export ROS_PACKAGE_PATH=/jackal_ws/src/nav-competition-icra2022/:$ROS_PACKAGE_PATH
-rosdep init && rosdep update
-
-
-cd /jackal_ws/src/nav-competition-icra2022/third_party/amrl_msgs
-make -j12 
-
-cd /jackal_ws/src/nav-competition-icra2022/enml
-git checkout icra_2023_barn_challenge
-make -j12
-
-cd /jackal_ws/src/nav-competition-icra2022/graph_navigation
-git checkout icra_2023_barn_challenge
-mkdir build
-cd build 
-cmake ..
-make -j12
-
-
 # TODO: "roscore" is shared between containers with the current network
 # configuration. The container will fail to start if an instance of roscore is
 # already running, whether on the host or within a different container. Users
@@ -112,13 +91,12 @@ make -j12
 # until proper container network isolation is implemented. In the meantime, the
 # sleep command keeps the container running.
 # CMD roscore
+
 %environment
+export PATH="/venv/bin:$PATH"
 export NVIDIA_VISIBLE_DEVICES=all
 export NVIDIA_DRIVER_CAPABILITIES=compute,utility
 export DEBIAN_FRONTEND=noninteractive
 export TZ=America/Chicago
-%runscript
-exec /bin/bash sleep infinity "$@"
-%startscript
-exec /bin/bash sleep infinity "$@"
+
 
