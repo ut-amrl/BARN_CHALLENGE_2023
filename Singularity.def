@@ -98,5 +98,5 @@ export NVIDIA_VISIBLE_DEVICES=all
 export NVIDIA_DRIVER_CAPABILITIES=compute,utility
 export DEBIAN_FRONTEND=noninteractive
 export TZ=America/Chicago
-
+export BARN=`pwd`
 

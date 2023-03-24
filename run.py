@@ -187,14 +187,14 @@ if __name__ == "__main__":
         status = "succeeded"
         success = True
     print("Navigation %s with time %.4f (s)" %(status, curr_time - start_time))
-    isExist = os.path.exists("result/run_{}/".format(run_idx))
+    # isExist = os.path.exists("result/run_{}/".format(run_idx))
 
-    if not isExist:
-        # Create a new directory because it does not exist 
-        os.makedirs("result/run_{}/".format(run_idx))
-    with open("result/run_{}/{}.log".format(run_idx, args.world_idx), 'w') as f:
-        result = [args.world_idx, status, curr_time - start_time]
-        json.dump(result, f)
+    # if not isExist:
+    #     # Create a new directory because it does not exist 
+    #     os.makedirs("result/run_{}/".format(run_idx))
+    # with open("result/run_{}/{}.log".format(run_idx, args.world_idx), 'w') as f:
+    #     result = [args.world_idx, status, curr_time - start_time]
+    #     json.dump(result, f)
         
     path_file_name = join(base_path, "worlds/BARN/path_files", "path_%d.npy" %args.world_idx)
     path_array = np.load(path_file_name)
@@ -212,8 +212,8 @@ if __name__ == "__main__":
     print("Navigation metric: %.4f" %(nav_metric))
     
     with open(args.out, "wb") as f:
-        f.write("%d %d %d %d %.4f %.4f\n" %(args.world_idx, success, collided, (curr_time - start_time)>=100, curr_time - start_time, nav_metric))
-    
+        f.write("%d %d %d %d %.4f %.4f\n".encode() %(args.world_idx, success, collided, (curr_time - start_time)>=100, curr_time - start_time, nav_metric))
+
     mb_nav_stack_process.send_signal(signal.SIGINT)
     gazebo_process.send_signal(signal.SIGINT)
     print('finish cleanly')

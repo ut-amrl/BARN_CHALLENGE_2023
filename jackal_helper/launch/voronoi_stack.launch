@@ -1,5 +1,5 @@
 <launch>
-  <arg name="rviz_path" default="-d /home/alienwareamrl/Research/BARN_CHALLENGE_2023/rviz/vor_rviz.rviz" />
+  <!-- <arg name="rviz_path" default="-d /home/alienwareamrl/Research/BARN_CHALLENGE_2023/rviz/vor_rviz.rviz" /> -->
 
   <!-- Start the navigation stack -->
   <!-- The configuration files are loaded from jackal_helper -->
