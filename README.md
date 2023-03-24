@@ -1,5 +1,10 @@
-# Run Steps 1-4 for BARN Challenge Organizers !!
+# Run Steps 0-4 for BARN Challenge Organizers !!
 
+## Step 0: Clone the repo
+
+```
+git clone git@github.com:ut-amrl/BARN_CHALLENGE_2023.git
+```
 
 ## Step 1: Add the following to your `~/.bashrc` to point `ROS_PACKAGE_PATH` to the BARN repo
 ```
