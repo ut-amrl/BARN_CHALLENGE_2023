@@ -78,7 +78,7 @@ def path_coord_to_gazebo_coord(x, y):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='test BARN navigation challenge')
     parser.add_argument('--algo', type=str, help="either mb or vor", default="vor")
-    parser.add_argument('--param', type=str, help="either 2022 or 2023", default=3)
+    parser.add_argument('--param', type=str, help="either 2022 or 2023", default="2023")
     parser.add_argument('--result_dir', type=str, default='result')
     parser.add_argument('--world_idx', type=int, default=0)
     parser.add_argument('--gui', type=int, default=1)
