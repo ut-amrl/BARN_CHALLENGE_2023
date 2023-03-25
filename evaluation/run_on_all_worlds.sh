@@ -2,7 +2,7 @@
 
 for world_idx in {0..299}
 do
-    python3 run.py --world_idx $world_idx --run_idx 3
+    python3 run.py --world_idx $world_idx --run_idx 3 --algo "vor"
     pkill -9 python
     pkill -9 rosmaster
     pkill -9 gzclient

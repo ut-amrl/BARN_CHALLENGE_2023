@@ -2,6 +2,7 @@
 
 cd jackal_helper/script
 chmod +x *.sh
+find . -name "*.py" -exec chmod +x {} \;
 cd -
 
 git submodule update --recursive --init

@@ -15,12 +15,13 @@ import sys
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Bool
 
-global ls 
+global ls
 global turn
-global hallucinate 
+global hallucinate
 global pose_pub
-global flag 
+global flag
 global cleared
+
 
 def callback(data):
     global turn
@@ -44,8 +45,10 @@ def callback(data):
 
 
 global count
+
+
 def callbackscan(data):
-    global ls 
+    global ls
     global count
     global pose_pub
     global hallucinate
@@ -54,34 +57,36 @@ def callbackscan(data):
     ls = data
     if(count > 0):
         count = count - 1
-        #make fake obstacles
+        # make fake obstacles
         ls.angle_min = -3.1415
         ls.angle_max = 3.1415
         num_append = 959 - len(ls.ranges)
         print("APPENDING:")
         print(num_append)
         each_side = int(num_append / 2)
-        #print(ls.ranges)
-        #print(type(ls.ranges))
+        # print(ls.ranges)
+        # print(type(ls.ranges))
         tempRange = list(ls.ranges)
         for i in range(each_side):
-            tempRange.insert(0,0.75)
+            tempRange.insert(0, 0.75)
         for i in range(each_side):
             tempRange.append(0.75)
         if(num_append % 2 != 0):
-            tempRange.append(0.75) 
-        ls.ranges = tempRange 
-        #rint(ls.ranges)
+            tempRange.append(0.75)
+        ls.ranges = tempRange
+        # rint(ls.ranges)
     pose_pub.publish(ls)
-    
+
+
 def main():
     global pose_pub
-    rospy.init_node('hall',anonymous=True)
-    pose_pub = rospy.Publisher("scan_hall",LaserScan,queue_size=1)
+    rospy.init_node('hall', anonymous=True)
+    pose_pub = rospy.Publisher("scan_hall", LaserScan, queue_size=1)
     rospy.Subscriber("front/scan", LaserScan, callbackscan)
     rospy.Subscriber("turninplace", Bool, callback)
 
     rospy.spin()
+
 
 if __name__ == '__main__':
     global ls
