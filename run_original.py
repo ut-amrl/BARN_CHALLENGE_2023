@@ -68,7 +68,9 @@ if __name__ == "__main__":
 
     world_idx = int(sys.argv[1])
     run_idx = int(sys.argv[2])
-    modify_variables(int(sys.argv[3]))
+    gui = int(sys.argv[3])
+    if len(sys.argv) >= 5:
+        modify_variables(int(sys.argv[4]))
     # parser.add_argument('--world_idx', type=int, default=world_idx)
     
     ##########################################################################################
@@ -92,7 +94,7 @@ if __name__ == "__main__":
         'roslaunch',
         launch_file,
         'world_name:=' + world_name,
-        'gui:=' + ("true")
+        'gui:=' + ("true" if gui == 1 else "false")
     ])
     time.sleep(5)  # sleep to wait until the gazebo being created
     

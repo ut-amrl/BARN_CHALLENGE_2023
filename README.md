@@ -1,4 +1,4 @@
-# Run Steps 0-4 for BARN Challenge Organizers !!
+# Run Steps 0-4 (for BARN Challenge Organizers)
 
 ## Step 0: Clone the repo
 
@@ -28,40 +28,47 @@ bash build_packages.sh
 ```
 python3 run.py --world_idx 0 
 ```
+---
 
-# Setup and Install
+# Setup and Install (for BARN Challenge Participants)
 
-## Step 1: Clone the repo
+## Without Docker
+
+### Step 1: Clone the repo
 
 ```
 git clone git@github.com:ut-amrl/BARN_CHALLENGE_2023.git
 ```
 
-## Step 2: Add the following to your `~/.bashrc` to point `ROS_PACKAGE_PATH` to the BARN repo
+### Step 2: Add the following to your `~/.bashrc` to point `ROS_PACKAGE_PATH` to the BARN repo
 ```
 export ROS_PACKAGE_PATH=/path/to/BARN_CHALLENGE_2023:$ROS_PACKAGE_PATH
 source ~/.bashrc
 ```
 
-## Step 3: Build
+### Step 3: Build
 ```
 cd /path/to/BARN_CHALLENGE_2023
 bash build_packages.sh 
 ```
 
-## Step 4: Run
-Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command (first argument indicates the world id and the second argument is the trial run number):
-
+### Step 4: Add the following to your `~/.bashrc` to setup the workspace
 ```
-python3 run_original.py 1 1
+source /path/to/BARN_CHALLENGE_2023/devel/setup.bash
 ```
 
-# Running with Docker (Do the following after Step 2 above)
+### Step 5: Run
+Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command (first argument indicates the world id, the second argument is the trial run number, and the third argument is 1 if you want GUI else 0):
 
-## Step 2.5: Setup
+```
+python3 run_original.py 1 1 1
+```
 
+## With Docker (Do the following after Step 2 above)
 
-### Prerequisites
+### Step 2.5: Setup
+
+#### Prerequisites
 
 1. [**Install Docker Engine**](https://docs.docker.com/engine/install/ubuntu)
 
@@ -71,7 +78,7 @@ python3 run_original.py 1 1
 
 4. [**Add users to the `docker` group**](https://docs.docker.com/engine/install/linux-postinstall)
 
-### Build
+#### Build
 
 ```
 git clone git@github.com:ut-amrl/ros-noetic-docker.git
@@ -80,14 +87,14 @@ cd /path/to/ros-noetic-docker
 ./launch.py barn
 ```
 
-### Add the following to `~/.bashrc`:
+#### Add the following to `~/.bashrc`:
 
 ```
 [[ -e /dockerrc ]] && source /dockerrc
 source ~/.bashrc
 ```
 
-### Start shell in container
+#### Start shell in container
 ```
 docker exec -it $USER-noetic-barn-app-1 bash
 ```

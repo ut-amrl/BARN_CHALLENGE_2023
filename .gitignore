@@ -10,3 +10,6 @@ result/
 worlds/
 __pycache__/
 .vscode/
+.catkin_workspace
+devel/
+

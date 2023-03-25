@@ -38,6 +38,9 @@ void forcesCb(ConstContactsPtr &_msg){
             }
         }
     }
+    std_msgs::Bool collide;
+    collide.data = false;
+    pub.publish(collide);
 }
 
 // Position callback function
