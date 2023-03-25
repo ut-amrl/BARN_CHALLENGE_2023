@@ -58,11 +58,24 @@ source /path/to/BARN_CHALLENGE_2023/devel/setup.bash
 ```
 
 ### Step 5: Run
-Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command (first argument indicates the world id, the second argument is the trial run number, and the third argument is 1 if you want GUI else 0):
+Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command:
 
 ```
-python3 run_original.py 1 1 1
+python3 run.py
 ```
+Available flags:
+- `--algo`: either "mb" (move_base + graph nav) or "vor" (voronoi + graph nav) {default: "vor"}
+- `--param`: either "2022" or "2023" (i.e., this is the parameter to choose in the localgoal.py script) {default: "2023"}
+- `--result_dir`: path to the directory where results will be dumped {default: "result"}
+- `--world_idx`: world id {default: 0}
+- `--gui`: 0 is false and 1 is true {default: 1}
+- `--run_idx`: trial run number {default: 0}
+
+To run multiple runs on multiple worlds:
+```
+bash run_multiple_runs.sh 0 40 0 299 "vor" "2023"
+```
+where the first two args are for start and end of run_idx, and the next two for start and end of world_idx. So this will do 40 runs over all the worlds for voronoi based planner and with 2023 choice of parameters.
 
 ## With Docker (Do the following after Step 2 above)
 
