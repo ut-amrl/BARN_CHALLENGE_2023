@@ -162,6 +162,8 @@ if __name__ == "__main__":
         nav_as.send_goal(mb_goal)
 
     elif args.algo == "vor":
+        filename = str(args.world_idx)
+        record_cmd = 'screencast -s 0.5 {filename}.mp4'
         # launch voronoi + graph nav navigation stack
         # is fake DWA with spoofed cmd_vel to cmd_vel_fake
         launch_file = join(base_path, '..', 'jackal_helper/launch/voronoi_stack.launch')
@@ -169,6 +171,7 @@ if __name__ == "__main__":
             'roslaunch',
             launch_file,
         ])
+        proc = subprocess.Popen(record_cmd, shell=True)
 
     else:
         raise ValueError("Unknown algorithm %s" % (args.algo))
@@ -243,7 +246,8 @@ if __name__ == "__main__":
 
     # with open(args.out, "wb") as f:
     #     f.write("%d %d %d %d %.4f %.4f\n".encode() %(args.world_idx, success, collided, (curr_time - start_time)>=100, curr_time - start_time, nav_metric))
-
+    # Wait for the recording to finish
+    proc.wait()
     os.system('rosnode kill collision_pub_gazebo')
     mb_nav_stack_process.send_signal(signal.SIGINT)
     gazebo_process.send_signal(signal.SIGINT)
