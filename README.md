@@ -24,7 +24,12 @@ singularity run nav_competition_image.sif
 bash build_packages.sh 
 ```
 
-## Step 4: Run the run.py file
+## Step 4: Add the following to your `~/.bashrc` to setup the workspace
+```
+source /path/to/BARN_CHALLENGE_2023/devel/setup.bash
+```
+
+## Step 5: Run the run.py file
 ```
 python3 run.py --world_idx 0 
 ```
