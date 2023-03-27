@@ -57,8 +57,7 @@ def main():
     odom = None
     rospy.init_node('listen', anonymous=True)
     pose_pub = rospy.Publisher("move_base_simple/localgoal", PoseStamped, queue_size=1)
-    # rospy.Subscriber("/luisa_path", Path, callback)
-    rospy.Subscriber("/move_base/TrajectoryPlannerROS/global_plan", Path, callback)
+    rospy.Subscriber("/luisa_path", Path, callback)
 
     rospy.Subscriber("enml_odometry", Odometry, callbackO)
 
