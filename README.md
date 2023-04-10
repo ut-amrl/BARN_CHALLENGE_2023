@@ -1,3 +1,5 @@
+We assume that you have downloaded libtorch and unzipped it in /opt/libtorch/
+
 # Run Steps 0-4 (for BARN Challenge Organizers)
 
 ## Step 0: Clone the repo

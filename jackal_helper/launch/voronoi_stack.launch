@@ -1,6 +1,6 @@
 <launch>
   <arg name="param_value" default="2023" />
-  <arg name="rviz_path" default="-d /home/alienwareamrl/Research/BARN_CHALLENGE_2023/rviz/vor_rviz.rviz" />
+  <arg name="rviz_path" default="-d /home/rchandra/Research/BARN_CHALLENGE_2023/rviz/vor_rviz.rviz" />
   <!-- Start the navigation stack -->
   <!-- The configuration files are loaded from jackal_helper -->
   <node pkg="jackal_helper" type="local_spoofer_2023.py" name="local_spoofer" />
