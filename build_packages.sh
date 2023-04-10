@@ -22,5 +22,8 @@ cd build
 cmake ..
 make -j12
 
-cd ../../..
+cd ../../voronoi_global_planner/
+git chekout main
+
+cd ../..
 catkin_make

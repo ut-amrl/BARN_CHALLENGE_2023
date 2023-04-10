@@ -82,6 +82,12 @@ bash run_multiple_runs.sh 0 40 0 299 "vor" "2023"
 ```
 where the first two args are for start and end of run_idx, and the next two for start and end of world_idx. So this will do 40 runs over all the worlds for voronoi based planner and with 2023 choice of parameters.
 
+To analyse results generated from `run_multiple_runs.sh`:
+```
+python analyse_results.py "result_vor_2023" 20
+```
+where the first argument is the result_dir that contains all the logs, and the second argument represents that it will plot just the top 20 most failed worlds.
+
 ## With Docker (Do the following after Step 2 above)
 
 ### Step 2.5: Setup
