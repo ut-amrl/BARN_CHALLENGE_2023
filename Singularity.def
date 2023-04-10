@@ -7,10 +7,9 @@ com.nvidia.volumes.needed="nvidia_driver"
 
 %setup
     mkdir -p ${SINGULARITY_ROOTFS}/barn
-    cp -r ./libtorch/ ${SINGULARITY_ROOTFS}/opt/libtorch
+    cp -r /opt/libtorch ${SINGULARITY_ROOTFS}/opt/libtorch
 %files  
     ./ /barn/nav-competition-icra2023
-    ./libtorch/ /opt/libtorch
 
 
 %post
@@ -32,7 +31,7 @@ software-properties-common
 
 pip3 install scipy
 pip3 install scikit-learn
-pip3 install matplotlib
+pip3 install matplotlib==3.7.1
 
 # https://github.com/ut-amrl/amrl_shared_lib
 apt-get update && apt-get install -y \
