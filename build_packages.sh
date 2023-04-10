@@ -23,7 +23,7 @@ cmake ..
 make -j12
 
 cd ../../voronoi_global_planner/
-git chekout main
+git checkout main
 
 cd ../..
 catkin_make
