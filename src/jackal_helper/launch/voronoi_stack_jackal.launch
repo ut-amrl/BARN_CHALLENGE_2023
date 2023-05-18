@@ -6,7 +6,8 @@
   <node pkg="jackal_helper" type="localgoal_2023.py" name="localgoal" output="screen" args="$(arg param_value)">
     <remap from="/PathTopic" to="/luisa_path"/>
   </node>
-  <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" />
+  <node pkg="jackal_helper" type="run_webviz.sh" name="run_webviz" output="screen" />
+  <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" arg=""/>
   <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav"  output="screen" />
   <node pkg="jackal_helper" type="run_vor.sh" name="run_vor" output="screen" />
 </launch>

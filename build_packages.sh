@@ -21,5 +21,15 @@ cd build
 cmake ..
 make -j12
 
+cd ../webviz
+git checkout icra_2023_barn_challenge
+mkdir build
+cd build 
+cmake ..
+make -j12
+
+cd ../voronoi_global_planner
+checkout main
+
 # cd ../../..
 # catkin_make
