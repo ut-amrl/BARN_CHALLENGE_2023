@@ -50,7 +50,6 @@ git clone git@github.com:ut-amrl/BARN_CHALLENGE_2023.git
 ### Step 2: Add the following to your `~/.bashrc` to point `ROS_PACKAGE_PATH` to the BARN repo
 ```
 export ROS_PACKAGE_PATH=/path/to/BARN_CHALLENGE_2023:$ROS_PACKAGE_PATH
-source ~/.bashrc
 ```
 
 ### Step 3: Build
@@ -59,16 +58,16 @@ cd /path/to/BARN_CHALLENGE_2023
 bash build_packages.sh 
 ```
 
-### Step 4: Add the following to your `~/.bashrc` to setup the workspace
+## Step 4: Add the following to your `~/.bashrc` to setup the workspace
 ```
 source /path/to/BARN_CHALLENGE_2023/devel/setup.bash
 ```
 
-### Step 5: Run
-Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command:
+## Step 5: Run
+Download the worlds from [**this link**](https://github.com/Daffan/nav-competition-icra2022/tree/main/jackal_helper/worlds/BARN) and place them in `/path/to/BARN_CHALLENGE_2023/jackal_helper/worlds/BARN/`. Then run the following command (first argument indicates the world id, second argument is the trial run number, and the third argument is 1 if you want GUI else 0):
 
 ```
-python3 run.py
+python3 run_original.py 1 1 1
 ```
 Available flags:
 - `--algo`: either "mb" (move_base + graph nav) or "vor" (voronoi + graph nav) {default: "vor"}

@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-cd jackal_helper/script
+cd src/jackal_helper/script
 chmod +x *.sh
 find . -name "*.py" -exec chmod +x {} \;
 cd -
@@ -22,8 +22,15 @@ cd build
 cmake ..
 make -j12
 
-cd ../../voronoi_global_planner/
-git checkout main
+cd ../webviz
+git checkout icra_2023_barn_challenge
+mkdir build
+cd build 
+cmake ..
+make -j12
 
-cd ../..
-catkin_make
+cd ../voronoi_global_planner
+checkout main
+
+# cd ../../..
+# catkin_make

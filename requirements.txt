@@ -1,0 +1,6 @@
+numpy
+pyyaml
+rospkg
+scipy
+matplotlib
+scikit-learn

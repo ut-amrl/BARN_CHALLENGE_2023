@@ -13,3 +13,6 @@
 [submodule "third_party/voronoi_global_planner"]
 	path = third_party/voronoi_global_planner
 	url = git@github.com:luisa-mao/voronoi_global_planner.git
+[submodule "third_party/webviz"]
+	path = third_party/webviz
+	url = git@github.com:ut-amrl/webviz.git

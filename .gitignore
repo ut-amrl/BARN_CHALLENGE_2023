@@ -1,8 +1,9 @@
 *.sif
 bin/
-lib/
-libtorch/
 build/
+devel/
+.catkin_workspace
+lib/
 vagn/amrl_maps/
 vagn/amrl_msgs/
 bind/
@@ -11,8 +12,4 @@ result*/
 worlds/
 __pycache__/
 .vscode/
-.catkin_workspace
-devel/
-*.png
-*.jpg
-src/CMakeLists.txt
+*.pyc

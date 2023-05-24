@@ -2,11 +2,11 @@
 
 currrent_ws=$(dirname $(realpath $0))/..
 
-for j in $(eval echo {$1..$2})
+for j in {0..1}
 do
-    for i in $(eval echo {$3..$4})
+    for i in {275..299}
     do
-        python run.py --algo $5 --param $6 --result_dir "result_$5_$6" --world_idx $i --run_idx $j --gui 1
+        python run_original.py $i $j 0
         pkill -9 python
         pkill -9 rosmaster
         pkill -9 gzclient

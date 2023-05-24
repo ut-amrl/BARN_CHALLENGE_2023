@@ -1,0 +1,36 @@
+<launch>
+  <arg name="param_value" default="2023" />
+  <!-- Start the navigation stack -->
+  <!-- The configuration files are loaded from jackal_helper -->
+  <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
+
+    <rosparam file="$(find jackal_helper)/configs/params/costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find jackal_helper)/configs/params/costmap_common_params.yaml" command="load" ns="local_costmap" />
+
+    <rosparam file="$(find jackal_helper)/configs/params/odom_nav_params/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find jackal_helper)/configs/params/odom_nav_params/local_costmap_params.yaml" command="load" />
+
+    <rosparam file="$(find jackal_helper)/configs/params/base_local_planner_params.yaml" command="load" />
+    <rosparam file="$(find jackal_helper)/configs/params/move_base_params.yaml" command="load" />
+
+    <param name="base_global_planner" type="string" value="navfn/NavfnROS" />
+    <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
+
+    <remap from="odom" to="enml_odometry" />
+    <remap from="cmd_vel" to="cmd_vel_fake" />
+  </node>
+
+<<<<<<< HEAD:src/jackal_helper/launch/move_base_stack.launch
+  <node pkg="jackal_helper" type="local_spoofer_2023.py" name="local_spoofer" />
+  <node pkg="jackal_helper" type="localgoal_2023.py" name="localgoal" output="screen" args="$(arg param_value)">
+    <remap from="/PathTopic" to="/move_base/TrajectoryPlannerROS/global_plan"/>
+  </node>
+  <node pkg="jackal_helper" type="hall_2023.py" name="hall" />
+=======
+  <node pkg="jackal_helper" type="local_spoofer_2022.py" name="local_spoofer" />
+  <node pkg="jackal_helper" type="localgoal_2022.py" name="localgoal" />
+  <node pkg="jackal_helper" type="hall_2022.py" name="hall" />
+>>>>>>> zichao:src/jackal_helper/launch/move_base_DWA.launch
+  <node pkg="jackal_helper" type="run_enml.sh" name="run_enml" />
+  <node pkg="jackal_helper" type="run_graphnav.sh" name="run_graphnav" />
+</launch>

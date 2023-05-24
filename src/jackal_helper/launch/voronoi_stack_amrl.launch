@@ -1,0 +1,28 @@
+<launch>
+  <arg name="param_value" default="2023" />
+  <!-- Start the navigation stack -->
+  <!-- The configuration files are loaded from jackal_helper -->
+  <node pkg="jackal_helper" type="local_spoofer_2023.py" name="local_spoofer" />
+  <node pkg="jackal_helper" type="localgoal_2023.py" name="localgoal" output="screen" args="$(arg param_value)">
+    <remap from="/PathTopic" to="/luisa_path"/>
+  </node>
+
+  <node pkg="graph_navigation" type="navigation" name="navigation" 
+    args='-robot_config $(find graph_navigation)/config/navigation.lua 
+    --dw 10.0 --cw 0.2 --fw 0.1 
+    move_base_simple/goal:=move_base_simple/localgoal' 
+    cwd="node" />
+
+  <node pkg="enml" type="enml" name="enml" 
+    args='-c="$(find enml)/config" -r "icra2022_nav_challenge.lua"' 
+    cwd="node" />
+  <node pkg="webviz" type="websocket" name="websocket" cwd="node" >
+    <remap from="scan" to="velodyne_2dscan"/>
+  </node>
+  <node pkg="jackal_helper" type="run_vor.sh" name="run_vor" output="screen" />
+
+  <!-- only exist for jackal in amrl -->
+  <node pkg="ut_jackal" type="autonomy_arbiter" name="autonomy_arbiter"
+      cwd="node" args="--config $(find ut_jackal)/config/autonomy_arbiter.lua" />
+  <include file="$(find ut_jackal)/launch/ouster.launch" />
+</launch>
