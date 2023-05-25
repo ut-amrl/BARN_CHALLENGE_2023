@@ -32,5 +32,5 @@ make -j12
 cd ../../voronoi_global_planner
 git checkout main
 
-# cd ../../..
-# catkin_make
+cd ../..
+catkin_make
