@@ -33,10 +33,10 @@ cd -
 git submodule update --recursive --init
 # export ROS_PACKAGE_PATH=`pwd`:$ROS_PACKAGE_PATH
 
-cd third_party/amrl_msgs
-make -j12 
+#cd third_party/amrl_msgs
+#make -j12 
 
-cd ../ut_jackal
+cd third_party/ut_jackal
 make -j12
 
 cd ../voronoi_global_planner

@@ -24,10 +24,7 @@ def callback(data):
     posy = odom.pose.pose.position.y
     diffx = odom.pose.pose.position.x - data.poses[0].pose.position.x
     diffy = odom.pose.pose.position.y - data.poses[0].pose.position.y
-<<<<<<< HEAD:src/jackal_helper/script/localgoal_2023.py
     goals = []
-=======
->>>>>>> zichao:src/jackal_helper/script/2022_challenge/localgoal_2022.py
 
     for possibleGoal in data.poses:
         possibleGoal.pose.position.x = possibleGoal.pose.position.x + diffx
@@ -38,12 +35,8 @@ def callback(data):
         # Calculate distance between current position and goal
         dist = math.sqrt((posx - goalx)**2 + (posy - goaly)**2)
 
-<<<<<<< HEAD:src/jackal_helper/script/localgoal_2023.py
         # If the distance is greater than 0.3, publish the goal
         if((PARAM == "2022" and dist < 1 and dist > 0.75) or (PARAM == "2023" and dist > 0.3)):
-=======
-        if(dist < 1 and dist > 0.75):
->>>>>>> zichao:src/jackal_helper/script/2022_challenge/localgoal_2022.py
             pose_pub.publish(possibleGoal)
             return
 
@@ -63,11 +56,7 @@ def main():
     odom = None
     rospy.init_node('listen', anonymous=True)
     pose_pub = rospy.Publisher("move_base_simple/localgoal", PoseStamped, queue_size=1)
-<<<<<<< HEAD:src/jackal_helper/script/localgoal_2023.py
     rospy.Subscriber("/PathTopic", Path, callback)
-=======
-    rospy.Subscriber("/move_base/TrajectoryPlannerROS/global_plan", Path, callback)
->>>>>>> zichao:src/jackal_helper/script/2022_challenge/localgoal_2022.py
 
     rospy.Subscriber("enml_odometry", Odometry, callbackO)
 
