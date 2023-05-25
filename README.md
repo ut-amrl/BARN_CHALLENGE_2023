@@ -125,3 +125,27 @@ docker exec -it $USER-noetic-barn-app-1 bash
 ```
 
 Continue to Steps 3 and 4 as above
+
+
+### Parameters to be tuned:
+#### enml.lua
+1. robot_sensor_offset
+1. scan_topic
+1. odometry_topic
+
+#### nav.lua
+1. laser_loc
+2. laser_topic
+3. odom_topic
+4. speed and acc (angular and linear)
+1. local_fov
+1. obstacle_margin
+1. num_options
+
+#### localgoal.py
+1. dist value
+
+#### voronoi jackal_params
+1. laser_transform
+1. scan_topic
+1. enml_topic
