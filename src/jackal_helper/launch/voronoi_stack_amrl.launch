@@ -7,14 +7,14 @@
     <remap from="/PathTopic" to="/luisa_path"/>
   </node>
 
-  <node pkg="graph_navigation" type="navigation" name="navigation" 
+  <node pkg="graph_navigation" type="navigation" name="navigation" if="true" 
     args='-robot_config $(find graph_navigation)/config/navigation.lua 
     --dw 10.0 --cw 0.2 --fw 0.1 
     move_base_simple/goal:=move_base_simple/localgoal' 
     cwd="node" />
 
-  <node pkg="enml" type="enml" name="enml" 
-    args='-c="$(find enml)/config" -r "icra2022_nav_challenge.lua"' 
+  <node pkg="enml" type="enml" name="enml" if="true"
+    args='-d1 -c $(find enml)/config -r icra2022_nav_challenge.lua' 
     cwd="node" />
   <node pkg="webviz" type="websocket" name="websocket" cwd="node" >
     <remap from="scan" to="velodyne_2dscan"/>
