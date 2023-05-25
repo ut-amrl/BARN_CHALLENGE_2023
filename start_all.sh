@@ -25,4 +25,4 @@ if [[ $ROS_PACKAGE_PATH != *"$graph_nav_path"* ]]; then
     export ROS_PACKAGE_PATH=$graph_nav_path:$ROS_PACKAGE_PATH
 fi
 
-roslaunch jackal_helper launch_all_amrl.launch
+roslaunch jackal_helper start_all.launch
