@@ -1,0 +1,33 @@
+<launch>
+    <arg name="param_value" default="2023" />
+
+    <!-- Jackal autonomy stack -->
+    <include file="$(find ut_jackal)/launch/autonomy.launch" />
+
+    <node name="local_spoofer"
+        pkg="jackal_helper"
+        type="local_spoofer_2023.py"
+        cwd="node"
+        respawn="true"
+        respawn_delay="2"
+        output="screen"/>
+
+    <node name="localgoal"
+        pkg="jackal_helper"
+        type="localgoal_2023.py"
+        cwd="node"
+        args="$(arg param_value)"
+        respawn="true"
+        respawn_delay="2"
+        output="screen">
+        <remap from="/PathTopic" to="/luisa_path"/>
+    </node>
+
+    <node name="run_vor"
+        pkg="jackal_helper"
+        type="run_vor.sh"
+        cwd="node"
+        respawn="true"
+        respawn_delay="2"
+        output="screen"/>
+</launch>

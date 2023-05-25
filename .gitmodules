@@ -1,18 +1,6 @@
-[submodule "third_party/amrl_maps"]
-	path = third_party/amrl_maps
-	url = https://github.com/ut-amrl/amrl_maps.git
-[submodule "third_party/amrl_msgs"]
-	path = third_party/amrl_msgs
-	url = https://github.com/ut-amrl/amrl_msgs.git
-[submodule "third_party/enml"]
-	path = third_party/enml
-	url = https://github.com/ut-amrl/enml.git
-[submodule "third_party/graph_navigation"]
-	path = third_party/graph_navigation
-	url = https://github.com/ut-amrl/graph_navigation.git
 [submodule "third_party/voronoi_global_planner"]
 	path = third_party/voronoi_global_planner
 	url = git@github.com:luisa-mao/voronoi_global_planner.git
-[submodule "third_party/webviz"]
-	path = third_party/webviz
-	url = git@github.com:ut-amrl/webviz.git
+[submodule "third_party/ut_jackal"]
+	path = third_party/ut_jackal
+	url = git@github.com:ut-amrl/ut_jackal.git

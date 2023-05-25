@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 ut_jackal_path=$(realpath third_party/ut_jackal)
 echo $ut_jackal_path
@@ -25,22 +25,4 @@ if [[ $ROS_PACKAGE_PATH != *"$graph_nav_path"* ]]; then
     export ROS_PACKAGE_PATH=$graph_nav_path:$ROS_PACKAGE_PATH
 fi
 
-cd src/jackal_helper/script
-chmod +x *.sh
-find . -name "*.py" -exec chmod +x {} \;
-cd -
-
-git submodule update --recursive --init
-# export ROS_PACKAGE_PATH=`pwd`:$ROS_PACKAGE_PATH
-
-cd third_party/amrl_msgs
-make -j12 
-
-cd ../ut_jackal
-make -j12
-
-cd ../voronoi_global_planner
-git checkout main
-
-cd ../..
-catkin_make
+roslaunch jackal_helper launch_all_amrl.launch
