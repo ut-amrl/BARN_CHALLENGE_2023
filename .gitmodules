@@ -4,3 +4,6 @@
 [submodule "third_party/ut_jackal"]
 	path = third_party/ut_jackal
 	url = git@github.com:ut-amrl/ut_jackal.git
+[submodule "third_party/amrl_msgs"]
+	path = third_party/amrl_msgs
+	url = git@github.com:ut-amrl/amrl_msgs.git
